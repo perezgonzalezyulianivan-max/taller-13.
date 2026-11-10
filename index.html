@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller 13 - Tablero Kanban</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+        <div class="encabezado-contenido">
+            <div>
+                <h1>Tablero Kanban</h1>
+                <p class="subtitulo">
+                    Gestión de proyectos · Programación Web Creativa II
+                    · Universidad de Caldas
+                </p>
+            </div>
+            <div class="resumen">
+                <span class="resumen-numero" id="total-tareas">0</span>
+                <span class="resumen-texto">Total de tareas</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- FORMULARIO PARA CREAR Y EDITAR TAREAS -->
+        <section class="panel-formulario" aria-labelledby="titulo-formulario">
+            <h2 id="titulo-formulario">Nueva tarea</h2>
+
+            <form id="form-tarea" novalidate>
+                <div class="campo">
+                    <label for="titulo">Título de la tarea *</label>
+                    <input type="text" id="titulo" maxlength="60"
+                           placeholder="Ejemplo: Diseñar el inicio"
+                           autocomplete="off">
+                </div>
+
+                <div class="campo">
+                    <label for="prioridad">Prioridad</label>
+                    <select id="prioridad">
+                        <option value="baja">Baja</option>
+                        <option value="media" selected>Media</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                </div>
+
+                <div class="campo campo-ancho">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" rows="3" maxlength="200"
+                              placeholder="Detalles de la tarea"></textarea>
+                </div>
+
+                <div class="acciones-formulario">
+                    <button type="submit" id="btn-guardar"
+                            class="boton boton-primario">
+                        Agregar tarea
+                    </button>
+                    <button type="button" id="btn-cancelar"
+                            class="boton boton-secundario" hidden>
+                        Cancelar edición
+                    </button>
+                    <button type="button" id="btn-vaciar"
+                            class="boton boton-suave">
+                        Vaciar tablero
+                    </button>
+                </div>
+            </form>
+
+            <p id="mensaje" class="mensaje" role="status" aria-live="polite"
+               hidden></p>
+        </section>
+
+        <!-- TABLERO CON LAS TRES COLUMNAS -->
+        <section class="tablero" aria-label="Tablero Kanban">
+
+            <article class="columna columna-pendiente" data-estado="pendiente">
+                <header class="columna-encabezado">
+                    <h2>Pendientes</h2>
+                    <span class="contador" id="contador-pendiente">0</span>
+                </header>
+                <div class="lista-tareas" id="lista-pendiente"></div>
+            </article>
+
+            <article class="columna columna-proceso" data-estado="proceso">
+                <header class="columna-encabezado">
+                    <h2>En proceso</h2>
+                    <span class="contador" id="contador-proceso">0</span>
+                </header>
+                <div class="lista-tareas" id="lista-proceso"></div>
+            </article>
+
+            <article class="columna columna-completada" data-estado="completada">
+                <header class="columna-encabezado">
+                    <h2>Completadas</h2>
+                    <span class="contador" id="contador-completada">0</span>
+                </header>
+                <div class="lista-tareas" id="lista-completada"></div>
+            </article>
+
+        </section>
+    </main>
+
+    <footer class="pie">
+        Taller 13 · Programación Web Creativa II ·
+        Docente: Andrés Felipe Osorio Quintero
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
